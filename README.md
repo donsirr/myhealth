@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MyHealth - Civic Health Platform for Naga City
 
-## Getting Started
+A modern, accessible web application designed to empower Nagueños with proactive health management tools, real-time dengue outbreak monitoring, and digital health passport capabilities.
 
-First, run the development server:
+![MyHealth Platform](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-38B2AC?style=flat-square&logo=tailwind-css)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-11.0-FF0055?style=flat-square&logo=framer)
+
+## 🎯 Overview
+
+MyHealth is a **trusted civic health initiative by the City Government of Naga**, providing residents with:
+
+- **Cardiovascular Risk Assessment** - Evidence-based CVD, stroke, and heart attack risk calculators
+- **Real-time Dengue Monitoring** - Interactive map showing outbreak hotspots in Naga City
+- **Digital Health Passport** - Emergency medical information with QR code access
+- **Wellness Screening** - Information on free health services and preventive care
+- **Future Roadmap** - Transparent communication of upcoming features
+
+## ✨ Key Features
+
+### 🫀 Heart Health Assessment
+- Multi-disease risk calculators (CVD, Stroke, Heart Attack)
+- Dynamic question sets based on selected condition
+- Real-time risk calculation with visual feedback
+- Input validation and placeholder interactions
+
+### 🦟 Dengue Watch
+- Interactive Leaflet map with outbreak hotspots
+- Strict geographic bounds (Naga City only)
+- Severity-based markers (High/Moderate alerts)
+- Prevention tips and reporting information
+- **Contact:** (054) 473-2326 - Naga City Health Office
+
+### 💳 Digital Health Passport (LifeQR)
+- Secure local storage of emergency medical data
+- QR code generation for quick access
+- Blood type, allergies, emergency contacts
+- Real-time edit and save with modal feedback
+
+### 🗓️ Wellness Screening
+- Free health screenings catalog
+- Cervical cancer, prostate health, HIV/AIDS testing
+- Expandable service cards with requirements
+- Professional lucide-react icons
+
+### 🛣️ Future Roadmap
+- **Phase 1:** Public Beta & Awareness (Active)
+- **Phase 2:** Hospital Data Integration (Planned - Q3 2025)
+- **Phase 3:** PhilSys National ID Sync (Future - 2026)
+- Scroll-animated progress line with smooth green→blue color transition
+
+## 🚀 Tech Stack
+
+**Framework & Language:**
+- Next.js 16 (App Router)
+- TypeScript
+- React 18
+
+**Styling & Animation:**
+- Tailwind CSS - Utility-first styling
+- Framer Motion - Smooth animations and scroll effects
+- Glassmorphism design language
+
+**Mapping & Icons:**
+- Leaflet - Interactive maps
+- Lucide React - Professional icon library
+
+**State Management:**
+- React Context API - Passport data provider
+- Local Storage - Persistent health passport
+
+## 📦 Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+myhealth/
+├── app/
+│   ├── cvd/              # CVD risk assessment page
+│   ├── dengue/           # Dengue monitoring page
+│   ├── passport/         # Digital health passport
+│   ├── roadmap/          # Future roadmap page
+│   ├── screening/        # Wellness screening page
+│   ├── layout.tsx        # Root layout with nav
+│   └── page.tsx          # Home page
+├── components/
+│   ├── dengue-map.tsx    # Leaflet map component
+│   ├── top-nav.tsx       # Top navigation
+│   └── passport-provider.tsx  # Context provider
+└── README.md
+```
 
-## Learn More
+## 🎨 Design Philosophy
 
-To learn more about Next.js, take a look at the following resources:
+### Medical Clean Aesthetic
+- **Color Palette:** Sky blue (#0ea5e9) primary, green (#22c55e) for active states
+- **Glassmorphism:** `bg-white/80 backdrop-blur-sm border border-blue-100`
+- **Typography:** Inter font, high contrast (`text-slate-800`)
+- **Accessibility:** WCAG AAA compliance, senior-friendly design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Animations
+- **Framer Motion:** Smooth transitions and scroll effects
+- **Layered Opacity:** Roadmap color morphing (green→blue)
+- **Micro-interactions:** Hover states, focus indicators
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔑 Key Features
 
-## Deploy on Vercel
+### Map Restrictions
+Strict Naga City bounds prevent panning to other cities:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```typescript
+const nagaBounds = [[13.58, 123.15], [13.66, 123.25]];
+minZoom: 13,  // Cannot zoom to world view
+maxBoundsViscosity: 1.0  // Hard restriction
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Roadmap Animation
+Layered opacity for smooth color transitions:
+
+```typescript
+greenOpacity: [1, 0.3, 0]  // Fades out
+blueOpacity: [0, 0.7, 1]   // Fades in
+```
+
+## 📞 Contact
+
+**Naga City Health Office**  
+Phone: **(054) 473-2326**
+
+For dengue reporting, service inquiries, and eligibility questions.
+
+## 🗺️ Roadmap
+
+- ✅ **Phase 1:** CVD assessment, dengue monitoring, health passport (Current)
+- 🔜 **Phase 2:** Hospital data integration, appointments (Q3 2025)
+- 🔮 **Phase 3:** PhilSys National ID sync (2026)
+
+## 🌟 Vision
+
+> "MyHealth is designed to grow with the community, adapting to emerging health needs and technological advancements."
+
+---
+
+**Built with ❤️ for the people of Naga City**
