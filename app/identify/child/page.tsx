@@ -10,7 +10,7 @@ export default function ChildEmergencyPage() {
             icon: Thermometer,
             title: 'High Fever in Infants',
             age: '< 3 months',
-            description: 'Rectal temp ≥ 100.4°F (38°C)',
+            description: 'Rectal temp ≥ 38°C',
             action: 'Go to ER immediately',
             color: 'bg-red-500',
         },
@@ -179,9 +179,9 @@ export default function ChildEmergencyPage() {
                 <div className="bg-amber-50 border-l-4 border-amber-500 rounded-lg p-6 mb-12">
                     <h3 className="text-2xl font-bold text-slate-800 mb-4">Fever Quick Reference</h3>
                     <ul className="space-y-2 text-lg text-slate-700">
-                        <li><strong>0-3 months:</strong> Any fever ≥100.4°F → ER immediately</li>
-                        <li><strong>3-6 months:</strong> Fever ≥101°F → Call doctor</li>
-                        <li><strong>6+ months:</strong> Fever ≥103°F or lasting &gt;3 days → Seek care</li>
+                        <li><strong>0-3 months:</strong> Any fever ≥38°C → ER immediately</li>
+                        <li><strong>3-6 months:</strong> Fever ≥38.3°C → Call doctor</li>
+                        <li><strong>6+ months:</strong> Fever ≥39.4°C or lasting &gt;3 days → Seek care</li>
                     </ul>
                 </div>
 

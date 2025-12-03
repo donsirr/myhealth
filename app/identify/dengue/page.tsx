@@ -33,7 +33,7 @@ export default function DenguePage() {
     ];
 
     const commonSymptoms = [
-        'High fever (104°F/40°C)',
+        'High fever (40°C)',
         'Severe headache',
         'Pain behind the eyes',
         'Joint and muscle pain',
