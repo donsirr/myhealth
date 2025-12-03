@@ -4,6 +4,7 @@ import "./globals.css";
 import TopNav from "@/components/top-nav";
 import LifeQRProvider from "@/components/lifeqr-provider";
 import PassportProvider from "@/components/passport-provider";
+import StrokeTimerProvider from "@/components/stroke-timer-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,10 +26,12 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased bg-gradient-to-br from-slate-50 to-white`}>
         <PassportProvider>
           <LifeQRProvider>
-            <TopNav />
-            <main className="min-h-screen pt-20 bg-gradient-to-br from-slate-50 to-white">
-              {children}
-            </main>
+            <StrokeTimerProvider>
+              <TopNav />
+              <main className="min-h-screen pt-20 bg-gradient-to-br from-slate-50 to-white">
+                {children}
+              </main>
+            </StrokeTimerProvider>
           </LifeQRProvider>
         </PassportProvider>
       </body>

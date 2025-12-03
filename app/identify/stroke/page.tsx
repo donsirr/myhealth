@@ -1,37 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, Smile, UserX, MessageCircle, Clock, AlertTriangle, Phone, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowLeft, Smile, UserX, MessageCircle, Clock, AlertTriangle, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useStrokeTimer } from '@/components/stroke-timer-provider';
 
 export default function StrokePage() {
     const [selectedChecks, setSelectedChecks] = useState<string[]>([]);
-    const [isEducationExpanded, setIsEducationExpanded] = useState(false);
-    const [timerSeconds, setTimerSeconds] = useState(0);
-    const [timerActive, setTimerActive] = useState(false);
+    const { timerActive, timerSeconds, startTimer, stopTimer, formatTime } = useStrokeTimer();
 
-    // Timer logic - starts when any symptom is detected
+    // Reset selections when timer stops (from toast close button)
     useEffect(() => {
-        let interval: NodeJS.Timeout | null = null;
-
-        if (timerActive) {
-            interval = setInterval(() => {
-                setTimerSeconds(prev => prev + 1);
-            }, 1000);
+        if (!timerActive && selectedChecks.length > 0) {
+            setSelectedChecks([]);
         }
-
-        return () => {
-            if (interval) clearInterval(interval);
-        };
     }, [timerActive]);
-
-    // Format timer as MM:SS
-    const formatTime = (seconds: number) => {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    };
 
     const fastChecks = [
         {
@@ -79,15 +63,14 @@ export default function StrokePage() {
 
         setSelectedChecks(newChecks);
 
-        // Start timer if any F, A, or S is selected
+        // Start global timer if any F, A, or S is selected
         if (!timerActive && newChecks.some(c => ['face', 'arms', 'speech'].includes(c))) {
-            setTimerActive(true);
+            startTimer();
         }
 
         // Stop timer if all deselected
         if (newChecks.length === 0) {
-            setTimerActive(false);
-            setTimerSeconds(0);
+            stopTimer();
         }
     };
 
@@ -105,23 +88,23 @@ export default function StrokePage() {
                     Back to Menu
                 </Link>
 
-                {/* Active Timer - Shows at top when symptoms detected */}
+                {/* Active Timer - Shows at top when symptoms detected (ON STROKE PAGE) */}
                 <AnimatePresence>
                     {timerActive && (
                         <motion.div
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="mb-8 bg-red-600 text-white rounded-2xl p-6 text-center shadow-2xl"
+                            className="mb-8 bg-red-600 text-white rounded-2xl p-6 shadow-2xl"
                         >
-                            <div className="flex items-center justify-center gap-4">
-                                <Clock className="w-8 h-8 animate-pulse" />
-                                <div>
+                            <div className="flex items-center justify-center gap-6">
+                                <Clock className="w-10 h-10 flex-shrink-0 animate-pulse" />
+                                <div className="text-center">
                                     <p className="text-sm font-semibold mb-1">SYMPTOM DETECTED - TIME IS BRAIN</p>
-                                    <p className="text-5xl font-black tabular-nums">{formatTime(timerSeconds)}</p>
+                                    <p className="text-6xl font-black tabular-nums leading-none">{formatTime(timerSeconds)}</p>
                                 </div>
                             </div>
-                            <p className="mt-4 text-lg font-semibold">Call (054) 473-2326 or 911 immediately!</p>
+                            <p className="mt-4 text-lg font-semibold text-center">Call (054) 473-2326 or 911 immediately!</p>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -162,12 +145,12 @@ export default function StrokePage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     className={`text-left p-8 rounded-2xl border-4 transition-all duration-300 ${isTime && timerActive
-                                            ? 'bg-red-600 border-red-600 cursor-default text-white'
-                                            : isTime
-                                                ? 'bg-slate-50 border-slate-300 cursor-default'
-                                                : isSelected
-                                                    ? 'bg-purple-50 border-purple-500 shadow-xl'
-                                                    : 'bg-white border-slate-200 hover:border-purple-300 hover:shadow-lg'
+                                        ? 'bg-red-600 border-red-600 cursor-default text-white'
+                                        : isTime
+                                            ? 'bg-slate-50 border-slate-300 cursor-default'
+                                            : isSelected
+                                                ? 'bg-purple-50 border-purple-500 shadow-xl'
+                                                : 'bg-white border-slate-200 hover:border-purple-300 hover:shadow-lg'
                                         }`}
                                 >
                                     <div className="flex items-start gap-6">
@@ -220,57 +203,35 @@ export default function StrokePage() {
                     )}
                 </section>
 
-                {/* Collapsible Education Section */}
+                {/* Education Section - Always Visible */}
                 <section className="mb-12">
-                    <button
-                        onClick={() => setIsEducationExpanded(!isEducationExpanded)}
-                        className="w-full bg-blue-50 border-l-4 border-blue-500 rounded-lg p-6 hover:bg-blue-100 transition-colors text-left"
-                    >
-                        <div className="flex items-center justify-between">
-                            <h2 className="text-2xl font-bold text-slate-800">Is Stroke Reversible?</h2>
-                            {isEducationExpanded ? (
-                                <ChevronUp className="w-6 h-6 text-blue-600" />
-                            ) : (
-                                <ChevronDown className="w-6 h-6 text-blue-600" />
-                            )}
+                    <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-8">
+                        <h2 className="text-3xl font-bold text-slate-800 mb-6">Is Stroke Reversible?</h2>
+                        <div className="space-y-4 text-lg text-slate-700">
+                            <p className="font-semibold text-blue-700 text-2xl">
+                                ⏰ TIME IS BRAIN
+                            </p>
+                            <p>
+                                Yes! Many strokes (especially <strong>ischemic strokes</strong> caused by blood clots) are{' '}
+                                <strong className="text-green-700">REVERSIBLE</strong> if treated within{' '}
+                                <strong className="text-red-700">3-4.5 hours</strong>.
+                            </p>
+                            <p>
+                                Modern treatments like <strong>tPA (clot-busting drugs)</strong> and{' '}
+                                <strong>mechanical thrombectomy</strong> can restore blood flow and prevent permanent brain damage.
+                            </p>
+                            <div className="bg-white border-2 border-blue-300 rounded-xl p-6 mt-4">
+                                <p className="font-bold text-red-600 text-xl mb-2">⚠️ DO NOT WAIT</p>
+                                <ul className="list-disc list-inside space-y-2">
+                                    <li>Do not wait for symptoms to improve on their own</li>
+                                    <li>Do not "sleep it off" - this can be fatal</li>
+                                    <li>Do not drive yourself to the hospital</li>
+                                    <li>Call 911 immediately - paramedics start treatment en route</li>
+                                    <li>Note the exact time symptoms first appeared</li>
+                                </ul>
+                            </div>
                         </div>
-                    </button>
-
-                    <AnimatePresence>
-                        {isEducationExpanded && (
-                            <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="overflow-hidden"
-                            >
-                                <div className="bg-white border-l-4 border-blue-500 rounded-b-lg p-8 space-y-4 text-lg text-slate-700">
-                                    <p className="font-semibold text-blue-700 text-2xl">
-                                        ⏰ TIME IS BRAIN
-                                    </p>
-                                    <p>
-                                        Yes! Many strokes (especially <strong>ischemic strokes</strong> caused by blood clots) are{' '}
-                                        <strong className="text-green-700">REVERSIBLE</strong> if treated within{' '}
-                                        <strong className="text-red-700">3-4.5 hours</strong>.
-                                    </p>
-                                    <p>
-                                        Modern treatments like <strong>tPA (clot-busting drugs)</strong> and{' '}
-                                        <strong>mechanical thrombectomy</strong> can restore blood flow and prevent permanent brain damage.
-                                    </p>
-                                    <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-6 mt-4">
-                                        <p className="font-bold text-red-600 text-xl mb-2">⚠️ DO NOT WAIT</p>
-                                        <ul className="list-disc list-inside space-y-2">
-                                            <li>Do not wait for symptoms to improve on their own</li>
-                                            <li>Do not "sleep it off" - this can be fatal</li>
-                                            <li>Do not drive yourself to the hospital</li>
-                                            <li>Call 911 immediately - paramedics start treatment en route</li>
-                                            <li>Note the exact time symptoms first appeared</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    </div>
                 </section>
 
                 {/* Disclaimer */}
