@@ -1,6 +1,8 @@
 # MyHealth - Civic Health Platform for Naga City
 
-A modern, accessible web application (for now) designed to empower Nagueños with proactive health management tools, real-time dengue outbreak monitoring, and digital health passport capabilities.
+A modern, accessible web application designed to empower Nagueños with proactive health management tools, real-time dengue outbreak monitoring, emergency identification systems, and digital health passport capabilities.
+
+**Last Updated:** December 4, 2025
 
 ![MyHealth Platform](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
@@ -14,7 +16,7 @@ MyHealth is a **trusted civic health initiative by the City Government of Naga**
 - **Cardiovascular Risk Assessment** - Evidence-based CVD, stroke, and heart attack risk calculators
 - **Real-time Dengue Monitoring** - Interactive map showing outbreak hotspots in Naga City
 - **Digital Health Passport** - Emergency medical information with QR code access
-- **Stroke Identification Tool** - F.A.S.T. method for laypeople to recognize stroke symptoms
+- **Emergency Identification Hub** - F.A.S.T. stroke detection, heart attack, dengue, and child emergency tools
 - **Wellness Screening** - Information on free health services and preventive care
 - **Future Roadmap** - Transparent communication of upcoming features
 
@@ -45,26 +47,81 @@ MyHealth is a **trusted civic health initiative by the City Government of Naga**
 - Expandable service cards with requirements
 - Professional lucide-react icons
 
-### 🚨 Stroke Identification (F.A.S.T.)
-- Interactive F.A.S.T. symptom checker for laypeople
-- Educational content on stroke reversibility
-- Emergency contact CTAs (911 / Naga City Health Office)
+### 🚨 Emergency Identification Hub
+**Route:** `/identify`
+
+A comprehensive emergency identification system with 4 specialized tools:
+
+#### Stroke Detection (F.A.S.T.)
+- Interactive F.A.S.T. symptom checker (Face, Arms, Speech, Time)
+- **Persistent timer** - tracks time across all pages when symptoms detected
+- Educational content on stroke reversibility (3-4.5 hour window)
+- Purple theme for neurological emergencies
+- **Route:** `/identify/stroke`
+
+#### Heart Attack Recognition
+- Warning signs identification (chest pain, upper body pain, shortness of breath)
+- Gender-specific symptoms (women's symptoms highlighted)
+- Aspirin guidance for first aid
+- Red theme for cardiac emergencies
+- **Route:** `/identify/heart`
+
+#### Dengue Alert System
+- Common symptoms vs. critical warning signs
+- Day 3-7 critical period awareness
+- Medication warnings (avoid aspirin/ibuprofen)
+- Orange theme for fever-related emergencies
+- **Route:** `/identify/dengue`
+
+#### Child Emergency Guide
+- Age-specific emergency thresholds
+- Fever quick reference (0-3mo, 3-6mo, 6+mo)
+- 6 critical scenarios with immediate actions
+- Teal theme for pediatric care
+- **Route:** `/identify/child`
+
+**All tools include:**
+- Emergency CTAs (911 / Naga City Health Office)
 - High-accessibility design for panic situations
-- **Route:** `/identify`
+- Back to menu navigation
 
 ### 🛣️ Future Roadmap
-- **Phase 1:** Public Beta & Awareness (Active)
-  - ✅ CVD Assessment, Dengue Map, Health Passport, LifeQR
-  - ✅ Stroke Identification Tool
-- **Phase 1.5:** Mobile App Launch (Mid-2025)
-  - 📱 iOS & Android native apps
-  - 🔔 Push notifications for dengue alerts
-  - 📍 Location-based health services
-- **Phase 2:** Hospital Data Integration (Planned - Q1 2026)
-  - 🏥 Real-time bed availability
-  - 📅 Appointment scheduling
-  - 📱 Mobile app enhancements
-- **Phase 3:** PhilSys National ID Sync (Future - 2027)
+
+#### Phase 1: Public Beta & Awareness ✅ **COMPLETE** (December 2025)
+```
+████████████████████████████████████████ 100%
+```
+- ✅ CVD Assessment (3 calculators: CVD, Stroke, Heart Attack)
+- ✅ Dengue Map (Leaflet integration with Naga City bounds)
+- ✅ Digital Health Passport (LifeQR with QR code)
+- ✅ Emergency Identification Hub (Stroke, Heart, Dengue, Child)
+- ✅ Wellness Screening Catalog
+
+#### Phase 1.5: Mobile App Launch  🚧 **IN PLANNING** (Q2 2026)
+```
+████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 20%
+```
+- 📱 iOS & Android native apps
+- 🔔 Push notifications for dengue alerts
+- 📍 Location-based health services
+- 🎯 Offline mode for rural areas
+
+#### Phase 2: Hospital Data Integration 🔜 **PLANNED** (Q3-Q4 2026)
+```
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 0%
+```
+- 🏥 Real-time bed availability
+- 📅 Appointment scheduling
+- 📱 Mobile app enhancements
+- 🔗 Hospital system API integration
+
+#### Phase 3: PhilSys National ID Sync 🔮 **FUTURE** (2027+)
+```
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 0%
+```
+- 🆔 National ID authentication
+- 🏛️ Government health records integration
+- 🔐 Enhanced security with PhilSys
 
 ## 🚀 Tech Stack
 
@@ -110,15 +167,25 @@ myhealth/
 ├── app/
 │   ├── cvd/              # CVD risk assessment page
 │   ├── dengue/           # Dengue monitoring page
+│   ├── identify/         # Emergency identification hub
+│   │   ├── page.tsx      # Hub (selection menu)
+│   │   ├── stroke/       # Stroke F.A.S.T. tool
+│   │   ├── heart/        # Heart attack recognition
+│   │   ├── dengue/       # Dengue alert system
+│   │   └── child/        # Child emergency guide
 │   ├── passport/         # Digital health passport
+│   │   └── edit/         # Passport editor with QR code
 │   ├── roadmap/          # Future roadmap page
 │   ├── screening/        # Wellness screening page
 │   ├── layout.tsx        # Root layout with nav
 │   └── page.tsx          # Home page
 ├── components/
-│   ├── dengue-map.tsx    # Leaflet map component
-│   ├── top-nav.tsx       # Top navigation
-│   └── passport-provider.tsx  # Context provider
+│   ├── dengue-map.tsx          # Leaflet map component
+│   ├── stroke-timer-provider.tsx  # Global timer for stroke detection
+│   ├── lifeqr-modal.tsx        # QR code modal
+│   ├── lifeqr-provider.tsx     # LifeQR context
+│   ├── passport-provider.tsx   # Passport data context
+│   └── top-nav.tsx             # Top navigation
 └── README.md
 ```
 
@@ -161,12 +228,26 @@ Phone: **(054) 473-2326**
 
 For dengue reporting, service inquiries, and eligibility questions.
 
-## 🗺️ Roadmap
+## 🗺️ Roadmap Progress
 
-- ✅ **Phase 1:** CVD assessment, dengue monitoring, health passport, stroke tool (Current)
-- 📱 **Phase 1.5:** Mobile app (iOS/Android) with push notifications (Mid-2025)
-- 🔜 **Phase 2:** Hospital data integration, appointments, mobile enhancements (Q1 2026)
-- 🔮 **Phase 3:** PhilSys National ID sync (Q1 2027)
+### Overall Platform Completion
+```
+██████████████████░░░░░░░░░░░░░░░░░░░░░░ 45%
+```
+
+| Phase | Status | Progress | Target Date |
+|-------|--------|----------|-------------|
+| **Phase 1** | ✅ Complete | 100% | Dec 2025 |
+| **Phase 1.5** | 🚧 Planning | 20% | Q2 2026 |
+| **Phase 2** | 🔜 Planned | 0% | Q3-Q4 2026 |
+| **Phase 3** | 🔮 Future | 0% | 2027+ |
+
+### Detailed Breakdown
+
+- ✅ **Phase 1:** CVD assessment, dengue monitoring, health passport, emergency ID hub (4 tools)
+- 📱 **Phase 1.5:** Mobile app (iOS/Android) with push notifications
+- 🔜 **Phase 2:** Hospital data integration, appointments, mobile enhancements
+- 🔮 **Phase 3:** PhilSys National ID sync
 
 ## 🌟 Vision
 
