@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Save, User, Phone, Droplet, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
+import { ArrowLeft, Save, User, Phone, Droplet, AlertCircle, CheckCircle, XCircle, QrCode } from 'lucide-react';
 import { usePassport } from '@/components/passport-provider';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import QRCodeComponent from 'react-qr-code';
 
 export default function PassportEditPage() {
     const { passportData, updatePassportData } = usePassport();
@@ -14,6 +15,9 @@ export default function PassportEditPage() {
     const [formData, setFormData] = useState(passportData);
     const [showModal, setShowModal] = useState(false);
     const [saveSuccess, setSaveSuccess] = useState(true);
+
+    // Generate QR data string from passport info
+    const qrData = `${passportData.fullName || 'Not set'} | ${passportData.bloodType || 'Not set'} | ${passportData.emergencyContact || 'Not set'} | ${passportData.allergies || 'None'}`;
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -64,11 +68,37 @@ export default function PassportEditPage() {
                     </p>
                 </motion.div>
 
-                {/* Info Banner */}
+                {/* QR Code Display */}
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
+                    className="mb-8 bg-white/80 backdrop-blur-sm border border-sky-200 rounded-2xl p-8 shadow-lg shadow-sky-100"
+                >
+                    <div className="flex flex-col items-center">
+                        <div className="flex items-center gap-2 mb-4">
+                            <QrCode className="w-6 h-6 text-sky-500" />
+                            <h3 className="font-bold text-slate-800 text-xl">Your LifeQR Code</h3>
+                        </div>
+                        <div className="w-64 h-64 bg-white p-4 rounded-xl border-4 border-sky-500 flex items-center justify-center mb-4">
+                            <QRCodeComponent
+                                value={qrData}
+                                size={224}
+                                level="H"
+                                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                            />
+                        </div>
+                        <p className="text-sm text-slate-600 text-center">
+                            This QR code will be shown to first responders in emergencies
+                        </p>
+                    </div>
+                </motion.div>
+
+                {/* Info Banner */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
                     className="mb-8 bg-white/80 backdrop-blur-sm border border-blue-100 rounded-2xl p-6 shadow-lg shadow-sky-100"
                 >
                     <div className="flex items-start gap-4">
@@ -89,7 +119,7 @@ export default function PassportEditPage() {
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.3 }}
                     className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-3xl shadow-lg shadow-sky-100 p-8"
                 >
                     <form onSubmit={handleSubmit} className="space-y-6">

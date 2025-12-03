@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Heart, Map, Calendar, TrendingUp, Phone, Eye } from 'lucide-react';
+import { Heart, Map, Calendar, TrendingUp, Phone, Siren, Activity, QrCode } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function HomePage() {
@@ -50,15 +50,15 @@ export default function HomePage() {
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Heart Health */}
-          <motion.div variants={itemVariants}>
-            <Link href="/cvd" className="group block">
-              <div className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-3xl p-10 hover:border-sky-500 hover:shadow-xl shadow-lg shadow-sky-100 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex flex-col items-center text-center space-y-6">
+          {/* Heart Health - Activity Icon */}
+          <motion.div variants={itemVariants} className="h-full">
+            <Link href="/cvd" className="group block h-full">
+              <div className="h-full bg-white/80 backdrop-blur-sm border border-blue-100 rounded-3xl p-10 hover:border-sky-500 hover:shadow-xl shadow-lg shadow-sky-100 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                <div className="flex flex-col items-center text-center space-y-6 flex-1">
                   <div className="w-20 h-20 bg-sky-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Heart className="w-10 h-10 text-white" />
+                    <Activity className="w-10 h-10 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h3 className="text-2xl font-bold text-slate-800 mb-2">Heart Health</h3>
                     <p className="text-slate-700">
                       Assess your cardiovascular risk with our advanced calculator
@@ -76,14 +76,14 @@ export default function HomePage() {
           </motion.div>
 
           {/* Dengue Watch */}
-          <motion.div variants={itemVariants}>
-            <Link href="/dengue" className="group block">
-              <div className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-3xl p-10 hover:border-sky-500 hover:shadow-xl shadow-lg shadow-sky-100 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex flex-col items-center text-center space-y-6">
+          <motion.div variants={itemVariants} className="h-full">
+            <Link href="/dengue" className="group block h-full">
+              <div className="h-full bg-white/80 backdrop-blur-sm border border-blue-100 rounded-3xl p-10 hover:border-sky-500 hover:shadow-xl shadow-lg shadow-sky-100 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                <div className="flex flex-col items-center text-center space-y-6 flex-1">
                   <div className="w-20 h-20 bg-sky-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Map className="w-10 h-10 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h3 className="text-2xl font-bold text-slate-800 mb-2">Dengue Watch</h3>
                     <p className="text-slate-700">
                       Real-time outbreak monitoring and prevention tips
@@ -101,14 +101,14 @@ export default function HomePage() {
           </motion.div>
 
           {/* Wellness Screening */}
-          <motion.div variants={itemVariants}>
-            <Link href="/screening" className="group block">
-              <div className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-3xl p-10 hover:border-sky-500 hover:shadow-xl shadow-lg shadow-sky-100 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex flex-col items-center text-center space-y-6">
+          <motion.div variants={itemVariants} className="h-full">
+            <Link href="/screening" className="group block h-full">
+              <div className="h-full bg-white/80 backdrop-blur-sm border border-blue-100 rounded-3xl p-10 hover:border-sky-500 hover:shadow-xl shadow-lg shadow-sky-100 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                <div className="flex flex-col items-center text-center space-y-6 flex-1">
                   <div className="w-20 h-20 bg-sky-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Calendar className="w-10 h-10 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h3 className="text-2xl font-bold text-slate-800 mb-2">Wellness Services</h3>
                     <p className="text-slate-700">
                       Browse free health screenings and preventive care
@@ -125,23 +125,23 @@ export default function HomePage() {
             </Link>
           </motion.div>
 
-          {/* Identify Symptoms - NEW */}
-          <motion.div variants={itemVariants}>
-            <Link href="/identify" className="group block">
-              <div className="bg-white/80 backdrop-blur-sm border border-red-100 rounded-3xl p-10 hover:border-red-500 hover:shadow-xl shadow-lg shadow-red-100 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex flex-col items-center text-center space-y-6">
+          {/* Identify Symptoms - Siren Icon */}
+          <motion.div variants={itemVariants} className="h-full">
+            <Link href="/identify" className="group block h-full">
+              <div className="h-full bg-white/80 backdrop-blur-sm border border-red-100 rounded-3xl p-10 hover:border-red-500 hover:shadow-xl shadow-lg shadow-red-100 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                <div className="flex flex-col items-center text-center space-y-6 flex-1">
                   <div className="w-20 h-20 bg-red-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Eye className="w-10 h-10 text-white" />
+                    <Siren className="w-10 h-10 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h3 className="text-2xl font-bold text-slate-800 mb-2">Identify Symptoms</h3>
                     <p className="text-slate-700">
-                      Learn to spot Stroke signs immediately
+                      Emergency identification tools for Stroke, Heart Attack, Dengue & more
                     </p>
                   </div>
                   <div className="w-full pt-4 border-t border-red-100">
                     <span className="text-red-500 font-semibold inline-flex items-center">
-                      Learn F.A.S.T.
+                      Access Tools
                       <span className="ml-2 group-hover:ml-3 transition-all">→</span>
                     </span>
                   </div>
