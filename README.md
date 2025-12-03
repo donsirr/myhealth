@@ -1,6 +1,6 @@
-# MyHealth - Civic Health Platform for Naga City
+# MyHealth - Civic Health Platform
 
-A modern, accessible web application designed to empower Nagueños with proactive health management tools, real-time dengue outbreak monitoring, emergency identification systems, and digital health passport capabilities.
+A modern, accessible web & mobile application designed to empower Filipinos with proactive health management tools, real-time dengue outbreak monitoring, emergency identification systems, and digital health passport capabilities.
 
 **Last Updated:** December 4, 2025
 
@@ -11,10 +11,10 @@ A modern, accessible web application designed to empower Nagueños with proactiv
 
 ## 🎯 Overview
 
-MyHealth is a **trusted civic health initiative by the City Government of Naga**, providing residents with:
+MyHealth is a **civic health initiative**, providing citizens with:
 
 - **Cardiovascular Risk Assessment** - Evidence-based CVD, stroke, and heart attack risk calculators
-- **Real-time Dengue Monitoring** - Interactive map showing outbreak hotspots in Naga City
+- **Real-time Dengue Monitoring** - Interactive map showing outbreak hotspots in Naga City (as of right now)
 - **Digital Health Passport** - Emergency medical information with QR code access
 - **Emergency Identification Hub** - F.A.S.T. stroke detection, heart attack, dengue, and child emergency tools
 - **Wellness Screening** - Information on free health services and preventive care
@@ -97,7 +97,7 @@ A comprehensive emergency identification system with 4 specialized tools:
 - ✅ Emergency Identification Hub (Stroke, Heart, Dengue, Child)
 - ✅ Wellness Screening Catalog
 
-#### Phase 1.5: Mobile App Launch  🚧 **IN PLANNING** (Q2 2026)
+#### Phase 1.5: Mobile App Launch  🚧 **IN PLANNING** (Q1 2026)
 ```
 ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 20%
 ```
@@ -106,7 +106,7 @@ A comprehensive emergency identification system with 4 specialized tools:
 - 📍 Location-based health services
 - 🎯 Offline mode for rural areas
 
-#### Phase 2: Hospital Data Integration 🔜 **PLANNED** (Q3-Q4 2026)
+#### Phase 2: Hospital Data Integration 🔜 **PLANNED** (Q2-Q4 2026)
 ```
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 0%
 ```
@@ -143,23 +143,6 @@ A comprehensive emergency identification system with 4 specialized tools:
 - React Context API - Passport data provider
 - Local Storage - Persistent health passport
 
-## 📦 Getting Started
-
-### Prerequisites
-- Node.js 18+ and npm
-
-### Installation
-
-```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## 🏗️ Project Structure
 
 ```
@@ -189,45 +172,6 @@ myhealth/
 └── README.md
 ```
 
-## 🎨 Design Philosophy
-
-### Medical Clean Aesthetic
-- **Color Palette:** Sky blue (#0ea5e9) primary, green (#22c55e) for active states
-- **Glassmorphism:** `bg-white/80 backdrop-blur-sm border border-blue-100`
-- **Typography:** Inter font, high contrast (`text-slate-800`)
-- **Accessibility:** WCAG AAA compliance, senior-friendly design
-
-### Animations
-- **Framer Motion:** Smooth transitions and scroll effects
-- **Layered Opacity:** Roadmap color morphing (green→blue)
-- **Micro-interactions:** Hover states, focus indicators
-
-## 🔑 Key Features
-
-### Map Restrictions
-Strict Naga City bounds prevent panning to other cities:
-
-```typescript
-const nagaBounds = [[13.58, 123.15], [13.66, 123.25]];
-minZoom: 13,  // Cannot zoom to world view
-maxBoundsViscosity: 1.0  // Hard restriction
-```
-
-### Roadmap Animation
-Layered opacity for smooth color transitions:
-
-```typescript
-greenOpacity: [1, 0.3, 0]  // Fades out
-blueOpacity: [0, 0.7, 1]   // Fades in
-```
-
-## 📞 Contact
-
-**Naga City Health Office**  
-Phone: **(054) 473-2326**
-
-For dengue reporting, service inquiries, and eligibility questions.
-
 ## 🗺️ Roadmap Progress
 
 ### Overall Platform Completion
@@ -238,8 +182,8 @@ For dengue reporting, service inquiries, and eligibility questions.
 | Phase | Status | Progress | Target Date |
 |-------|--------|----------|-------------|
 | **Phase 1** | ✅ Complete | 100% | Dec 2025 |
-| **Phase 1.5** | 🚧 Planning | 20% | Q2 2026 |
-| **Phase 2** | 🔜 Planned | 0% | Q3-Q4 2026 |
+| **Phase 1.5** | 🚧 Planning | 20% | Q1 2026 |
+| **Phase 2** | 🔜 Planned | 0% | Q2-Q4 2026 |
 | **Phase 3** | 🔮 Future | 0% | 2027+ |
 
 ### Detailed Breakdown
