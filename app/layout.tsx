@@ -12,8 +12,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MyHealth - Proactive Care for Every Nagueño",
-  description: "Civic health platform for Naga City: Heart health, Dengue watch, and Emergency LifeQR",
+  title: "MyHealth - Your care package.",
+  description: "",
 };
 
 export default function RootLayout({
