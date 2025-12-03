@@ -1,6 +1,6 @@
 # MyHealth - Civic Health Platform for Naga City
 
-A modern, accessible web application designed to empower Nagueños with proactive health management tools, real-time dengue outbreak monitoring, and digital health passport capabilities.
+A modern, accessible web application (for now) designed to empower Nagueños with proactive health management tools, real-time dengue outbreak monitoring, and digital health passport capabilities.
 
 ![MyHealth Platform](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
@@ -46,9 +46,8 @@ MyHealth is a **trusted civic health initiative by the City Government of Naga**
 
 ### 🛣️ Future Roadmap
 - **Phase 1:** Public Beta & Awareness (Active)
-- **Phase 2:** Hospital Data Integration (Planned - Q3 2025)
-- **Phase 3:** PhilSys National ID Sync (Future - 2026)
-- Scroll-animated progress line with smooth green→blue color transition
+- **Phase 2:** Hospital Data Integration (Planned - Q1 2026)
+- **Phase 3:** PhilSys National ID Sync (Future - 2027)
 
 ## 🚀 Tech Stack
 
@@ -148,8 +147,8 @@ For dengue reporting, service inquiries, and eligibility questions.
 ## 🗺️ Roadmap
 
 - ✅ **Phase 1:** CVD assessment, dengue monitoring, health passport (Current)
-- 🔜 **Phase 2:** Hospital data integration, appointments (Q3 2025)
-- 🔮 **Phase 3:** PhilSys National ID sync (2026)
+- 🔜 **Phase 2:** Hospital data integration, appointments (Q1 2026)
+- 🔮 **Phase 3:** PhilSys National ID sync (Q1 2027)
 
 ## 🌟 Vision
 

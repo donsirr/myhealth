@@ -12,12 +12,11 @@ export default function RoadmapPage() {
         offset: ['start center', 'end center'],
     });
 
-    // Transform scroll progress but STOP at Phase 2 (66%)
-    const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '66%']);
+    // Green line - grows from 0% to 33%, then stays at 33%
+    const greenLineHeight = useTransform(scrollYProgress, [0, 0.5, 1], ['0%', '33%', '33%']);
 
-    // Create smooth opacity transitions for color layers  
-    const greenOpacity = useTransform(scrollYProgress, [0, 0.3, 0.6], [1, 0.3, 0]);
-    const blueOpacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0.7, 1, 1]);
+    // Blue line - stays at 0% until scroll 0.5, then grows from 0% to 33%
+    const blueLineHeight = useTransform(scrollYProgress, [0, 0.5, 1], ['0%', '0%', '33%']);
 
     const phases = [
         {
@@ -81,26 +80,20 @@ export default function RoadmapPage() {
                     {/* Static Vertical Line (Full) */}
                     <div className="absolute left-8 top-0 bottom-0 w-1 bg-slate-200 md:left-1/2 md:-ml-0.5" />
 
-                    {/* Animated Progress Line - Layered for Smooth Color Transition */}
-                    <div className="absolute left-8 top-0 w-1 md:left-1/2 md:-ml-0.5" style={{ height: '66%' }}>
-                        {/* Green Layer (Phase 1) - Fades out as you scroll */}
-                        <motion.div
-                            className="absolute inset-0 bg-gradient-to-b from-green-500 via-green-400 to-emerald-500"
-                            style={{
-                                height: lineHeight,
-                                opacity: greenOpacity,
-                            }}
-                        />
+                    {/* Green Line (Phase 1) - Solid green from 0% to 33% */}
+                    <motion.div
+                        className="absolute left-8 top-0 w-1 bg-green-500 md:left-1/2 md:-ml-0.5"
+                        style={{ height: greenLineHeight }}
+                    />
 
-                        {/* Blue Layer (Phase 2) - Fades in as you scroll */}
-                        <motion.div
-                            className="absolute inset-0 bg-gradient-to-b from-blue-500 via-sky-500 to-blue-600"
-                            style={{
-                                height: lineHeight,
-                                opacity: blueOpacity,
-                            }}
-                        />
-                    </div>
+                    {/* Blue Line (Phase 2) - Solid blue starting at 33%, growing to 66% */}
+                    <motion.div
+                        className="absolute left-8 w-1 bg-blue-500 md:left-1/2 md:-ml-0.5"
+                        style={{
+                            top: '33%',
+                            height: blueLineHeight
+                        }}
+                    />
 
                     {/* Dashed Line from Phase 2 to Phase 3 (Static Gray) */}
                     <div
