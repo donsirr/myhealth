@@ -14,6 +14,7 @@ MyHealth is a **trusted civic health initiative by the City Government of Naga**
 - **Cardiovascular Risk Assessment** - Evidence-based CVD, stroke, and heart attack risk calculators
 - **Real-time Dengue Monitoring** - Interactive map showing outbreak hotspots in Naga City
 - **Digital Health Passport** - Emergency medical information with QR code access
+- **Stroke Identification Tool** - F.A.S.T. method for laypeople to recognize stroke symptoms
 - **Wellness Screening** - Information on free health services and preventive care
 - **Future Roadmap** - Transparent communication of upcoming features
 
@@ -44,9 +45,25 @@ MyHealth is a **trusted civic health initiative by the City Government of Naga**
 - Expandable service cards with requirements
 - Professional lucide-react icons
 
+### 🚨 Stroke Identification (F.A.S.T.)
+- Interactive F.A.S.T. symptom checker for laypeople
+- Educational content on stroke reversibility
+- Emergency contact CTAs (911 / Naga City Health Office)
+- High-accessibility design for panic situations
+- **Route:** `/identify`
+
 ### 🛣️ Future Roadmap
 - **Phase 1:** Public Beta & Awareness (Active)
+  - ✅ CVD Assessment, Dengue Map, Health Passport, LifeQR
+  - ✅ Stroke Identification Tool
+- **Phase 1.5:** Mobile App Launch (Mid-2025)
+  - 📱 iOS & Android native apps
+  - 🔔 Push notifications for dengue alerts
+  - 📍 Location-based health services
 - **Phase 2:** Hospital Data Integration (Planned - Q1 2026)
+  - 🏥 Real-time bed availability
+  - 📅 Appointment scheduling
+  - 📱 Mobile app enhancements
 - **Phase 3:** PhilSys National ID Sync (Future - 2027)
 
 ## 🚀 Tech Stack
@@ -146,8 +163,9 @@ For dengue reporting, service inquiries, and eligibility questions.
 
 ## 🗺️ Roadmap
 
-- ✅ **Phase 1:** CVD assessment, dengue monitoring, health passport (Current)
-- 🔜 **Phase 2:** Hospital data integration, appointments (Q1 2026)
+- ✅ **Phase 1:** CVD assessment, dengue monitoring, health passport, stroke tool (Current)
+- 📱 **Phase 1.5:** Mobile app (iOS/Android) with push notifications (Mid-2025)
+- 🔜 **Phase 2:** Hospital data integration, appointments, mobile enhancements (Q1 2026)
 - 🔮 **Phase 3:** PhilSys National ID sync (Q1 2027)
 
 ## 🌟 Vision

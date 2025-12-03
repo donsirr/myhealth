@@ -2,6 +2,7 @@
 
 import { X } from 'lucide-react';
 import { usePassport } from './passport-provider';
+import QRCode from 'react-qr-code';
 
 interface LifeQRModalProps {
     isOpen: boolean;
@@ -12,6 +13,9 @@ export default function LifeQRModal({ isOpen, onClose }: LifeQRModalProps) {
     const { passportData, hasPassport } = usePassport();
 
     if (!isOpen) return null;
+
+    // Generate QR data string from passport info
+    const qrData = `${passportData.fullName} | ${passportData.bloodType} | ${passportData.emergencyContact} | ${passportData.allergies}`;
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
@@ -31,17 +35,14 @@ export default function LifeQRModal({ isOpen, onClose }: LifeQRModalProps) {
 
                     <h2 className="text-2xl font-bold text-slate-900">LifeQR</h2>
 
-                    {/* Simulated QR Code */}
-                    <div className="w-48 h-48 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center">
-                        <div className="w-40 h-40 bg-white rounded-lg grid grid-cols-8 gap-1 p-2">
-                            {Array.from({ length: 64 }).map((_, i) => (
-                                <div
-                                    key={i}
-                                    className={`${Math.random() > 0.5 ? 'bg-slate-900' : 'bg-white'
-                                        } rounded-sm`}
-                                />
-                            ))}
-                        </div>
+                    {/* Real QR Code */}
+                    <div className="w-64 h-64 bg-white p-4 rounded-xl border-4 border-sky-500 flex items-center justify-center">
+                        <QRCode
+                            value={qrData}
+                            size={224}
+                            level="H"
+                            style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                        />
                     </div>
 
                     {/* User Information from Passport */}

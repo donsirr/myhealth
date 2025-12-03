@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Heart, Map, Calendar, TrendingUp, Phone } from 'lucide-react';
+import { Heart, Map, Calendar, TrendingUp, Phone, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function HomePage() {
@@ -49,7 +49,7 @@ export default function HomePage() {
         animate="visible"
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Heart Health */}
           <motion.div variants={itemVariants}>
             <Link href="/cvd" className="group block">
@@ -117,6 +117,31 @@ export default function HomePage() {
                   <div className="w-full pt-4 border-t border-blue-100">
                     <span className="text-sky-500 font-semibold inline-flex items-center">
                       Browse Services
+                      <span className="ml-2 group-hover:ml-3 transition-all">→</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
+          {/* Identify Symptoms - NEW */}
+          <motion.div variants={itemVariants}>
+            <Link href="/identify" className="group block">
+              <div className="bg-white/80 backdrop-blur-sm border border-red-100 rounded-3xl p-10 hover:border-red-500 hover:shadow-xl shadow-lg shadow-red-100 transition-all duration-300 transform hover:-translate-y-2">
+                <div className="flex flex-col items-center text-center space-y-6">
+                  <div className="w-20 h-20 bg-red-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Eye className="w-10 h-10 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800 mb-2">Identify Symptoms</h3>
+                    <p className="text-slate-700">
+                      Learn to spot Stroke signs immediately
+                    </p>
+                  </div>
+                  <div className="w-full pt-4 border-t border-red-100">
+                    <span className="text-red-500 font-semibold inline-flex items-center">
+                      Learn F.A.S.T.
                       <span className="ml-2 group-hover:ml-3 transition-all">→</span>
                     </span>
                   </div>
