@@ -271,7 +271,7 @@ Our secret sauce for visual depth:
 
 ### **Quick Deploy to Vercel**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/myhealth)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/donsirr/myhealth)
 
 ### **Local Development**
 
@@ -526,12 +526,12 @@ We welcome contributions! Here's how to get started:
 
 *Built with ❤️ in Naga City, Philippines*
 
-[Live Demo](https://myhealth.vercel.app) · [Report Bug](https://github.com/yourusername/myhealth/issues) · [Request Feature](https://github.com/yourusername/myhealth/issues)
+[Live Demo](https://myhealth.vercel.app) · [Report Bug](https://github.com/donsirr/myhealth/issues) · [Request Feature](https://github.com/donsirr/myhealth/issues)
 
 ---
 
 ### 🌟 Star us on GitHub — it helps!
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/myhealth?style=social)](https://github.com/yourusername/myhealth/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/donsirr/myhealth?style=social)](https://github.com/donsirr/myhealth/stargazers)
 
 </div>
